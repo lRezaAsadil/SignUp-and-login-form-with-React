@@ -3,21 +3,21 @@ export const notify = (type, me) => {
   if (type === "s") {
     toast.success(me, {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 1000,
       hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
       progress: undefined,
     });
   } else {
     toast.error("Invalid data!", {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 1000,
       hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
+      closeOnClic: false,
+      pauseOnHover: false,
+      draggable: false,
       progress: undefined,
     });
   }
