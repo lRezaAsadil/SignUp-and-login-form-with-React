@@ -15,6 +15,6 @@ and React-router-dom@6.9.0 is used
 <h2 align="left">The project :</h2>
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/lRezaAsadil/Registration-and-login-form-with-React/master/src/images/Form.gif"> 
+  <img src="https://raw.githubusercontent.com/lRezaAsadil/Registration-and-login-form-with-React/master/src/images/FormGif.gif"> 
   <h3>Login & Sign up  page</h3>
 </div>
