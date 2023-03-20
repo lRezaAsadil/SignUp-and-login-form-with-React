@@ -1,9 +1,9 @@
 import './App.css';
-
+import SignUp from "./component/SignUp"
 function App() {
   return (
     <div className="App">
-      <h1> Start new from  </h1>
+      <SignUp/>
     </div>
   );
 }
