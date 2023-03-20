@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import validate from "./validate";
+import { notify } from "./notify";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const SignUp = () => {
   const [focus, setFocus] = useState({});
   const [errors, setErrors] = useState({});
@@ -21,14 +24,30 @@ const SignUp = () => {
   // useEffect
   useEffect(() => {
     setErrors(validate(data, "signUp"));
-  }, [data]);
+  }, [data, focus]);
   // focusHandler
   const focusHandler = (event) => {
     setFocus({ ...focus, [event.target.name]: true });
   };
+  //   submitHandler
+  const submitHandler = (event) => {
+    event.preventDefault();
+    if (!Object.keys(errors).length) {
+      notify("s", "You signed successfully");
+    } else {
+      notify("invalid");
+      setFocus({
+        Name: true,
+        Email: true,
+        Password: true,
+        ConfrimPassword: true,
+        isAccepted: true,
+      });
+    }
+  };
   return (
     <div>
-      <form>
+      <form onSubmit={submitHandler}>
         <h1>Sign Up</h1>
         <div>
           <label>Name</label>
@@ -80,7 +99,7 @@ const SignUp = () => {
           <label>I accept terms of privacy policy</label>
           <input
             type="checkbox"
-            name="IsAccepted"
+            name="isAccepted"
             value={data.isAccepted}
             onChange={changeHandler}
             onFocus={focusHandler}
@@ -94,6 +113,7 @@ const SignUp = () => {
           <button type="submit">Sign up</button>
         </div>
       </form>
+      <ToastContainer />
     </div>
   );
 };
