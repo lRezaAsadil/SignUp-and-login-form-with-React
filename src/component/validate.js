@@ -38,6 +38,23 @@ const validate = (data, type) => {
     } else {
       delete errors.isAccepted;
     }
+  } else {
+    // validate Email
+    if (!data.Email) {
+      errors.Email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(data.Email)) {
+      errors.Email = "Email address is invalid";
+    } else {
+      delete errors.Email;
+    }
+    // validate Password
+    if (!data.Password) {
+      errors.Password = "password is required";
+    } else if (data.Password.length < 6) {
+      errors.Password = "Password need to be 6 character or more";
+    } else {
+      delete errors.Password;
+    }
   }
   return errors;
 };
