@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import validate from "./validate";
 import { notify } from "./notify";
 import styles from "./SignUp.module.css";
-
+import { Link } from "react-router-dom"; 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
@@ -40,7 +40,7 @@ const Login = () => {
   return (
     <div className={styles.container}>
       <form onSubmit={submitHandler} className={styles.formContainer}>
-        <h1 className={styles.header}>Sign Up</h1>
+        <h1 className={styles.header}>Login</h1>
 
         <div className={styles.formField}>
           <label>Email</label>
@@ -76,7 +76,7 @@ const Login = () => {
         </div>
 
         <div className={styles.formButtons}>
-          <a href="#/">Sign up</a>
+          <Link to="/signUp">Sign up</Link>
           <button type="submit">Login</button>
         </div>
       </form>
