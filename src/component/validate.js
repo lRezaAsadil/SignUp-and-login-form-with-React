@@ -33,7 +33,7 @@ const validate = (data, type) => {
       delete errors.ConfrimPassword;
     }
     // validate isAccepted
-    if (!data.IsAccepted) {
+    if (!data.isAccepted) {
       errors.isAccepted = "Accept our regulations";
     } else {
       delete errors.isAccepted;
