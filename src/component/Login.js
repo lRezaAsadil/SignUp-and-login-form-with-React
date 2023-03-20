@@ -5,7 +5,10 @@ import styles from "./SignUp.module.css";
 import { Link } from "react-router-dom"; 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {usePageTitle} from"./usePageTitle.js"
+
 const Login = () => {
+    usePageTitle('Login');
   const [focus, setFocus] = useState({});
   const [errors, setErrors] = useState({});
   const [data, setData] = useState({

@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import validate from "./validate";
 import { notify } from "./notify";
 import styles from "./SignUp.module.css";
+import {usePageTitle} from"./usePageTitle.js"
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 const SignUp = () => {
+    usePageTitle('signUp');
   const [focus, setFocus] = useState({});
   const [errors, setErrors] = useState({});
   const [data, setData] = useState({
-    Name: "",
+    Name: "",    
+
     Email: "",
     Password: "",
     ConfrimPassword: "",
