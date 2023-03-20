@@ -4,11 +4,13 @@ import SignUp from "./component/SignUp";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 function App() {
-  return (
+  return (  
     <div className="App">
       <Routes>
         <Route path="/signUp" element={<SignUp />} />
+
         <Route path="/login" element={<Login />} />
+        
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </div>
