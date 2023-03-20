@@ -1,20 +1,30 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import validate from "./validate";
 const SignUp = () => {
+  const [focus, setFocus] = useState({});
+  const [errors, setErrors] = useState({});
   const [data, setData] = useState({
     Name: "",
     Email: "",
     Password: "",
     ConfrimPassword: "",
-    IsAccepted: false,
+    isAccepted: false,
   });
+  //   changeHandler
   const changeHandler = (event) => {
     if (event.target.name === "IsAccepted") {
       setData({ ...data, [event.target.name]: event.target.checked });
     } else {
       setData({ ...data, [event.target.name]: event.target.value });
     }
-    console.log(data);
+  };
+  // useEffect
+  useEffect(() => {
+    setErrors(validate(data, "signUp"));
+  }, [data]);
+  // focusHandler
+  const focusHandler = (event) => {
+    setFocus({ ...focus, [event.target.name]: true });
   };
   return (
     <div>
@@ -27,7 +37,9 @@ const SignUp = () => {
             name="Name"
             value={data.Name}
             onChange={changeHandler}
+            onFocus={focusHandler}
           />
+          {errors.Name && focus.Name && <span>{errors.Name}</span>}
         </div>
         <div>
           <label>Email</label>
@@ -36,7 +48,9 @@ const SignUp = () => {
             name="Email"
             value={data.Email}
             onChange={changeHandler}
+            onFocus={focusHandler}
           />
+          {errors.Email && focus.Email && <span>{errors.Email}</span>}
         </div>
         <div>
           <label>Password</label>
@@ -45,7 +59,9 @@ const SignUp = () => {
             name="Password"
             value={data.Password}
             onChange={changeHandler}
+            onFocus={focusHandler}
           />
+          {errors.Password && focus.Password && <span>{errors.Password}</span>}
         </div>
         <div>
           <label>Confrim Password</label>
@@ -54,16 +70,24 @@ const SignUp = () => {
             name="ConfrimPassword"
             value={data.ConfrimPassword}
             onChange={changeHandler}
+            onFocus={focusHandler}
           />
+          {errors.ConfrimPassword && focus.ConfrimPassword && (
+            <span>{errors.ConfrimPassword}</span>
+          )}
         </div>
         <div>
           <label>I accept terms of privacy policy</label>
           <input
             type="checkbox"
             name="IsAccepted"
-            value={data.IsAccepted}
+            value={data.isAccepted}
             onChange={changeHandler}
+            onFocus={focusHandler}
           />
+          {errors.isAccepted && focus.isAccepted && (
+            <span>{errors.isAccepted}</span>
+          )}
         </div>
         <div>
           <a href="#/">Login</a>
